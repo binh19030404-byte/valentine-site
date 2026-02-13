@@ -84,7 +84,7 @@ const miniBtns = document.getElementById("miniBtns");
 const miniResult = document.getElementById("miniResult");
 
 btnYes.addEventListener("click", () => {
-  miniResult.textContent = "Hehe 😳 Anh biết mà! Chúc em Valentine thật hạnh phúc 💖";
+  miniResult.textContent = "Hehe 😳 Tớ biết mà! Thực ra thì không có lựa chọn đâu kk 💖";
   burstHearts(35);
 });
 
