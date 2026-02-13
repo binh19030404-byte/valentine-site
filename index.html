@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gửi cậu một lời chúc 💖</title>
+
+  <!-- Font tiếng Việt đẹp + ổn định -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="card">
+    <div class="inner">
+      <div class="topbar">
+  <div class="badge">14/02</div>
+
+  <div class="rightHeader">
+    <button id="musicBtn" class="chip" type="button" aria-pressed="false" title="Bật/Tắt nhạc">
+      <span id="musicIcon">🔇</span>
+      <span id="musicText">Nhạc: Tắt</span>
+    </button>
+  </div>
+</div>
+
+
+      <h1>Gửi <span id="herName">cậu</span></h1>
+      <p class="subtitle">Có một chiếc phong thư nhỏ dành cho cậu…</p>
+
+      <!-- ENVELOPE -->
+      <section class="envelope" id="envelope">
+        <div class="envTop"></div>
+        <div class="envBody"></div>
+
+        <div class="letter" id="letter">
+          <div class="letterHead">
+            <div class="stamp">💌</div>
+            <div class="letterTitle">Lời chúc Valentine</div>
+          </div>
+
+          <div class="message" id="messageBox">
+            <p>
+              “14/2 này mình chỉ muốn chúc bạn luôn vui và được yêu thương đúng cách. 
+              Mình cũng rất vui vì đang có cơ hội được tìm hiểu bạn. Hy vọng thời gian tới tụi mình sẽ có thêm nhiều kỷ niệm đẹp <span class="emoji">💗</span>
+               Mong hôm nay cậu sẽ nhận được thật nhiều điều dễ thương. Nếu thiếu một điều thì… để mình bù nha 😄"
+            </p>
+         
+            <p class="sig">— <b id="yourName">anh</b></p>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button id="btnOpen" type="button">Mở phong thư <span class="emoji">✨</span></button>
+        <button id="btnHearts" class="secondary" type="button">Thả tim <span class="emoji">💕</span></button>
+      </div>
+
+      <!-- MINI GAME -->
+      <section class="mini">
+        <div class="miniTitle">Một câu hỏi nhỏ…</div>
+        <div class="miniText">Cậu có đồng ý nhận lời chúc này không? <span class="emoji">🥺</span></div>
+
+        <div class="miniBtns" id="miniBtns">
+          <button id="btnYes" class="yes" type="button">Đồng ý <span class="emoji">💖</span></button>
+          <button id="btnNo" class="no" type="button">Không <span class="emoji">🙈</span></button>
+        </div>
+
+        <div class="miniResult" id="miniResult" aria-live="polite"></div>
+      </section>
+
+      <!-- COMMENTS -->
+      <section class="comments">
+        <h2>Góc để lại lời <span class="emoji">💬</span></h2>
+        <p class="hint">Cậu (hoặc ai đó) có thể để lại một lời cảm ơn / cảm xúc nha.</p>
+
+        <form id="commentForm" class="commentForm">
+          <input id="nameInput" maxlength="30" placeholder="Tên (vd: Xinh gái)" />
+          <textarea id="contentInput" maxlength="3000" placeholder="Cho xin vài lời..." required></textarea>
+          <button type="submit">Gửi lời <span class="emoji">💖</span></button>
+        </form>
+
+        <div id="commentList" class="commentList"></div>
+      </section>
+    </div>
+
+    <footer>
+      <span>Made with <span class="emoji">💗</span></span>
+    </footer>
+  </main>
+
+  <div id="heartsLayer" aria-hidden="true"></div>
+
+  <!-- Nhạc nền: thêm file music.mp3 cùng thư mục -->
+  <audio id="bgm" preload="none" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
