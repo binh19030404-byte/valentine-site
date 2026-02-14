@@ -108,6 +108,7 @@ body::after{
   position: relative;
   z-index: 50;
   padding: 2px 0;
+  flex-wrap: wrap;
 }
 
 footer{ position: relative; z-index: 5; }
@@ -129,6 +130,7 @@ footer{ position: relative; z-index: 5; }
   display:flex;
   align-items:center;
   gap:10px;
+  flex-wrap: wrap;
 }
 
 .chip{
@@ -151,7 +153,7 @@ footer{ position: relative; z-index: 5; }
 
 h1{
   margin: 8px 0 6px;
-  font-size: 36px;
+  font-size: clamp(28px, 6vw, 36px);
   letter-spacing:-.03em;
   line-height:1.15;
 }
@@ -160,6 +162,7 @@ h1{
   margin:0 0 14px;
   color: var(--muted);
   line-height:1.55;
+  font-size: clamp(14px, 4vw, 16px);
 }
 
 /* emoji ổn định trong chữ */
@@ -173,7 +176,7 @@ h1{
 /* ENVELOPE */
 .envelope{
   position: relative;
-  height: 210px;
+  height: clamp(200px, 50vw, 210px);
   border-radius: 20px;
   overflow: visible;
   margin-top: 10px;
@@ -193,7 +196,7 @@ h1{
   position:absolute;
   left:0; right:0;
   top:0;
-  height: 120px;
+  height: clamp(100px, 30vw, 120px);
   border-radius: 20px;
   background: linear-gradient(135deg, rgba(255,0,128,.35), rgba(59,130,246,.25));
   border:1px solid rgba(255,255,255,.16);
@@ -208,7 +211,7 @@ h1{
   left: 14px;
   right: 14px;
   bottom: 14px;
-  height: 170px;
+  height: clamp(150px, 45vw, 170px);
   border-radius: 18px;
   background: rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.14);
@@ -217,6 +220,8 @@ h1{
   opacity: 0;
   transition: transform .65s ease, opacity .65s ease;
   overflow:hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .letterHead{
@@ -226,6 +231,7 @@ h1{
   padding: 12px 14px 10px;
   border-bottom: 1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.10);
+  flex-shrink: 0;
 }
 
 .stamp{
@@ -234,19 +240,24 @@ h1{
   border-radius: 12px;
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.12);
+  flex-shrink: 0;
 }
 
 .letterTitle{
   font-weight: 900;
   letter-spacing: .01em;
+  font-size: clamp(13px, 3vw, 15px);
 }
 
 .message{
   padding: 12px 14px 14px;
   line-height: 1.7;
-  font-size: 15px;
+  font-size: clamp(13px, 3.5vw, 15px);
+  overflow-y: auto;
+  flex: 1;
 }
 .message p{ margin: 0 0 10px; }
+.message p:last-of-type { margin-bottom: 0; }
 .sig{ margin-top: 10px; color: rgba(255,255,255,.80); }
 
 .envelope.open .envTop{ transform: rotateX(160deg); }
@@ -268,10 +279,10 @@ button, input, textarea{
 button{
   border:0;
   cursor:pointer;
-  padding:12px 14px;
+  padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 14px);
   border-radius: 14px;
   font-weight: 800;
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 16px);
   line-height: 1;
   letter-spacing: .01em;
   transition: transform .08s ease, opacity .2s ease, box-shadow .25s ease, background .2s ease;
@@ -305,8 +316,16 @@ button.secondary:hover, .miniBtns .no:hover{
   background: rgba(0,0,0,.14);
   border:1px solid rgba(255,255,255,.12);
 }
-.miniTitle{ font-weight: 900; margin-bottom: 6px; }
-.miniText{ color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+.miniTitle{ 
+  font-weight: 900; 
+  margin-bottom: 6px; 
+  font-size: clamp(15px, 4vw, 16px);
+}
+.miniText{ 
+  color: var(--muted); 
+  font-size: clamp(13px, 3.5vw, 14px); 
+  margin-bottom: 12px; 
+}
 .miniBtns{
   position: relative;
   display:flex;
@@ -314,7 +333,11 @@ button.secondary:hover, .miniBtns .no:hover{
   flex-wrap:wrap;
   min-height: 46px;
 }
-.miniResult{ margin-top: 12px; font-weight: 800; }
+.miniResult{ 
+  margin-top: 12px; 
+  font-weight: 800; 
+  font-size: clamp(13px, 3.5vw, 14px);
+}
 
 /* COMMENTS */
 .comments{
@@ -324,19 +347,26 @@ button.secondary:hover, .miniBtns .no:hover{
   background: rgba(0,0,0,.14);
   border:1px solid rgba(255,255,255,.12);
 }
-.comments h2{ margin: 0 0 6px; font-size: 16px; }
-.hint{ margin:0 0 12px; color: var(--muted); font-size: 13px; }
+.comments h2{ 
+  margin: 0 0 6px; 
+  font-size: clamp(15px, 4vw, 16px); 
+}
+.hint{ 
+  margin:0 0 12px; 
+  color: var(--muted); 
+  font-size: clamp(12px, 3vw, 13px); 
+}
 
 .commentForm{ display:grid; gap:10px; }
 .commentForm input, .commentForm textarea{
   width:100%;
-  padding: 12px 12px;
+  padding: clamp(10px, 2.5vw, 12px) clamp(10px, 2.5vw, 12px);
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.07);
   color: rgba(255,255,255,.92);
   outline:none;
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 16px);
 }
 .commentForm input::placeholder, .commentForm textarea::placeholder{
   color: rgba(255,255,255,.55);
@@ -345,7 +375,7 @@ button.secondary:hover, .miniBtns .no:hover{
 
 .commentList{ margin-top: 14px; display:grid; gap:10px; }
 .cmt{
-  padding: 12px 12px;
+  padding: clamp(10px, 2.5vw, 12px) clamp(10px, 2.5vw, 12px);
   border-radius: 16px;
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.12);
@@ -357,15 +387,27 @@ button.secondary:hover, .miniBtns .no:hover{
   justify-content:space-between;
   flex-wrap:wrap;
 }
-.cmt .name{ font-weight: 900; }
-.cmt .time{ color: var(--muted); font-size: 12px; }
-.cmt .text{ margin: 8px 0 0; line-height: 1.55; white-space: pre-wrap; }
+.cmt .name{ 
+  font-weight: 900; 
+  font-size: clamp(13px, 3.5vw, 14px);
+}
+.cmt .time{ 
+  color: var(--muted); 
+  font-size: clamp(11px, 2.5vw, 12px); 
+}
+.cmt .text{ 
+  margin: 8px 0 0; 
+  line-height: 1.55; 
+  white-space: pre-wrap; 
+  font-size: clamp(12px, 3vw, 14px);
+  word-break: break-word;
+}
 
 /* footer */
 footer{
-  padding: 14px 24px 18px;
+  padding: clamp(12px, 2.5vw, 14px) clamp(14px, 3vw, 24px) clamp(12px, 2.5vw, 18px);
   color: var(--muted);
-  font-size: 13px;
+  font-size: clamp(11px, 2.5vw, 13px);
   border-top: 1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.08);
   border-bottom-left-radius: var(--radius);
@@ -391,14 +433,164 @@ footer{
   to{ transform: translateY(-110vh) scale(1.45); opacity:0; }
 }
 
-/* Responsive */
+/* Responsive - Mobile First */
 @media (max-width: 480px){
-  .inner{ padding: 18px 14px 14px; }
-  h1{ font-size: 28px; }
-  .actions button{ flex: 1 1 auto; width: 100%; }
-  .miniBtns button{ flex: 1 1 auto; width: 100%; }
-  .comments, .mini{ padding: 12px; }
-  footer{ padding: 12px 14px 14px; }
-  .envelope{ height: 230px; }
-  .letter{ height: 190px; }
+  .inner{ 
+    padding: clamp(14px, 3vw, 18px) clamp(12px, 3vw, 14px) clamp(12px, 2.5vw, 14px);
+  }
+  
+  h1{ 
+    font-size: clamp(24px, 7vw, 28px);
+    margin: 6px 0 4px;
+  }
+  
+  .subtitle {
+    font-size: clamp(13px, 3.5vw, 14px);
+    margin: 0 0 10px;
+  }
+
+  .topbar {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .chip {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+  
+  .actions button{ 
+    flex: 1 1 auto; 
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .miniBtns {
+    gap: 8px;
+  }
+
+  .miniBtns button{ 
+    flex: 1 1 auto; 
+    width: 100%;
+  }
+
+  .mini, .comments{ 
+    padding: 12px;
+    margin-top: 12px;
+  }
+
+  .miniTitle {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .miniText {
+    font-size: 12px;
+  }
+
+  .comments h2 {
+    font-size: 14px;
+  }
+
+  .hint {
+    font-size: 12px;
+  }
+
+  .envelope{ 
+    height: clamp(180px, 55vw, 200px);
+    margin-bottom: 10px;
+  }
+
+  .envTop {
+    height: clamp(90px, 28vw, 110px);
+  }
+
+  .letter{ 
+    height: clamp(140px, 42vw, 160px);
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .letterHead {
+    padding: 10px 12px 8px;
+  }
+
+  .stamp {
+    width: 30px;
+    height: 30px;
+  }
+
+  .letterTitle {
+    font-size: 12px;
+  }
+
+  .message {
+    padding: 10px 12px 12px;
+    font-size: 12px;
+  }
+
+  footer{ 
+    padding: 10px 12px 12px;
+    font-size: 11px;
+  }
+
+  .commentForm input, .commentForm textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .commentForm textarea {
+    min-height: 80px;
+  }
+
+  .cmt {
+    padding: 10px;
+  }
+
+  .cmt .name {
+    font-size: 12px;
+  }
+
+  .cmt .time {
+    font-size: 10px;
+  }
+
+  .cmt .text {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+  .inner {
+    padding: 22px 20px 16px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 32px);
+  }
+
+  .envelope {
+    height: clamp(200px, 45vw, 220px);
+  }
+
+  .envTop {
+    height: clamp(110px, 27vw, 130px);
+  }
+
+  .letter {
+    height: clamp(160px, 40vw, 180px);
+  }
 }
